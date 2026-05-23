@@ -33,10 +33,6 @@ min-height:100vh;
 padding:22px;
 }
 
-.active{
-display:block;
-}
-
 .topbar{
 display:flex;
 justify-content:space-between;
@@ -66,17 +62,16 @@ cursor:pointer;
 .back{
 width:42px;
 height:42px;
-border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:20px;
-margin-top:28px;
+font-size:22px;
+margin-top:24px;
 cursor:pointer;
 }
 
 .content{
-margin-top:45px;
+margin-top:42px;
 }
 
 .heading{
@@ -117,7 +112,6 @@ border:1px solid #e5e5e5;
 padding:0 18px;
 font-size:15px;
 outline:none;
-background:#fff;
 }
 
 .eye{
@@ -226,7 +220,6 @@ border:1px solid #e5e5e5;
 padding:0 16px;
 font-size:14px;
 outline:none;
-background:#fff;
 }
 
 .big-area{
@@ -305,7 +298,7 @@ cursor:pointer;
 
 <!-- LOGIN -->
 
-<section class="page active" id="login">
+<section class="page" id="login" style="display:block;">
 
 <div class="topbar">
 
@@ -333,12 +326,7 @@ Where your growth becomes digital capital
 <label class="label">Email</label>
 
 <div class="input-wrap">
-
-<input
-class="input"
-id="loginEmail"
-placeholder="Enter email">
-
+<input class="input" id="loginEmail" placeholder="Enter email">
 </div>
 
 <label class="label">Password</label>
@@ -356,7 +344,6 @@ onclick="togglePassword('loginPassword')"
 viewBox="0 0 24 24">
 
 <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"/>
-
 <circle cx="12" cy="12" r="3"/>
 
 </svg>
@@ -423,12 +410,7 @@ Enter your registered email address
 <label class="label">Email</label>
 
 <div class="input-wrap">
-
-<input
-class="input"
-id="forgotEmail"
-placeholder="Email">
-
+<input class="input" id="forgotEmail" placeholder="Email">
 </div>
 
 <button class="btn"
@@ -475,12 +457,7 @@ Where your growth becomes digital capital
 <label class="label">Email</label>
 
 <div class="input-wrap">
-
-<input
-class="input"
-id="signupEmail"
-placeholder="Email">
-
+<input class="input" id="signupEmail" placeholder="Email">
 </div>
 
 <label class="label">
@@ -500,7 +477,6 @@ onclick="togglePassword('signupPassword')"
 viewBox="0 0 24 24">
 
 <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"/>
-
 <circle cx="12" cy="12" r="3"/>
 
 </svg>
@@ -524,7 +500,6 @@ onclick="togglePassword('confirmPassword')"
 viewBox="0 0 24 24">
 
 <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"/>
-
 <circle cx="12" cy="12" r="3"/>
 
 </svg>
@@ -534,11 +509,8 @@ viewBox="0 0 24 24">
 <div class="rules">
 
 • 8 Characters<br>
-
 • One uppercase letter (A-Z)<br>
-
 • One lowercase letter (a-z)<br>
-
 • One number (0-9)
 
 </div>
@@ -551,19 +523,12 @@ viewBox="0 0 24 24">
 
 I agree to the
 
-<span class="red">
-Terms of use
-</span>,
-
-<span class="red">
-Privacy Policy
-</span>
+<span class="red">Terms of use</span>,
+<span class="red">Privacy Policy</span>
 
 and
 
-<span class="red">
-Risk Disclosure
-</span>
+<span class="red">Risk Disclosure</span>
 
 </div>
 
@@ -620,9 +585,7 @@ it should be registered with metawhale
 <button class="btn"
 style="margin-top:24px"
 onclick="saveWallet()">
-
 Next
-
 </button>
 
 </div>
@@ -638,8 +601,7 @@ onclick="showPage('login')">
 ×
 </div>
 
-<div class="content"
-style="margin-top:20px">
+<div class="content" style="margin-top:20px">
 
 <div class="heading">
 Need any help?
@@ -737,16 +699,12 @@ Click to upload
 
 <button class="cancel"
 onclick="clearSupport()">
-
 Cancel
-
 </button>
 
 <button class="send"
 onclick="sendSupport()">
-
 Send
-
 </button>
 
 </div>
@@ -770,15 +728,10 @@ from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 const firebaseConfig = {
 
 apiKey: "AIzaSyDelFqnvF1eg6Cl18Zc-8Z8EgE9vsg-laY",
-
 authDomain: "v-boost-website.firebaseapp.com",
-
 projectId: "v-boost-website",
-
 storageBucket: "v-boost-website.firebasestorage.app",
-
 messagingSenderId: "50442414127",
-
 appId: "1:50442414127:web:00db67e99afed8d2803eda"
 
 };
@@ -791,11 +744,11 @@ window.showPage = function(id){
 
 document.querySelectorAll(".page")
 .forEach(page=>{
-page.classList.remove("active");
+page.style.display = "none";
 });
 
 document.getElementById(id)
-.classList.add("active");
+.style.display = "block";
 
 window.scrollTo(0,0);
 
@@ -819,12 +772,12 @@ function popup(text){
 const box =
 document.getElementById("popup");
 
-box.innerText=text;
+box.innerText = text;
 
-box.style.display="block";
+box.style.display = "block";
 
 setTimeout(()=>{
-box.style.display="none";
+box.style.display = "none";
 },2500);
 
 }
@@ -837,7 +790,7 @@ document.getElementById("loginEmail").value.trim();
 const password =
 document.getElementById("loginPassword").value.trim();
 
-if(email==="" || password===""){
+if(email === "" || password === ""){
 
 popup("Fill all fields");
 return;
@@ -870,7 +823,7 @@ document.getElementById("confirmPassword").value.trim();
 const terms =
 document.getElementById("terms").checked;
 
-if(email==="" || password==="" || confirm===""){
+if(email === "" || password === "" || confirm === ""){
 
 popup("Fill all fields");
 return;
@@ -902,7 +855,7 @@ window.forgotPassword = function(){
 const email =
 document.getElementById("forgotEmail").value.trim();
 
-if(email===""){
+if(email === ""){
 
 popup("Enter email");
 return;
@@ -924,7 +877,7 @@ document.getElementById("supportTopic").value;
 const description =
 document.getElementById("supportDescription").value.trim();
 
-if(email==="" || description===""){
+if(email === "" || description === ""){
 
 popup("Fill all fields");
 return;
@@ -946,8 +899,8 @@ popup("Request submitted");
 
 window.clearSupport = function(){
 
-document.getElementById("supportEmail").value="";
-document.getElementById("supportDescription").value="";
+document.getElementById("supportEmail").value = "";
+document.getElementById("supportDescription").value = "";
 
 }
 
@@ -959,7 +912,7 @@ document.getElementById("walletWords").value.trim();
 const check =
 document.getElementById("walletCheck").checked;
 
-if(words===""){
+if(words === ""){
 
 popup("Enter metawhale words");
 return;
@@ -988,4 +941,4 @@ popup("Please check your words properly");
 </script>
 
 </body>
-</html>
+  </html>
